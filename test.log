@@ -1,0 +1,172 @@
+Microsoft (R) Test Execution Command Line Tool Version 10.0.30319.1
+Copyright (c) Microsoft Corporation. All rights reserved.
+    
+Loading F:\work\repos\git\NuGetter\TfsBuild.NuGetter.Activities.vsmdi...
+Starting execution...
+
+Results               Top Level Tests
+-------               ---------------
+Failed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingLiteralVersionShouldNotChangeAnything
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYNoSemanticShouldReturnFullYear
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMNoSemanticShouldReturnAllDateInfo
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMBNoSemanticShouldReturnAllDateInfoPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMNoSemanticShouldReturnAllDateInfoSmallYear
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMBNoSemanticShouldReturnAllDateInfoSmallYearPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMDDNoSemanticShouldReturnAllDateInfo
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMDDBNoSemanticShouldReturnAllDateInfoPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMDDNoSemanticShouldReturnAllDateInfoSmallYear
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMDDBNoSemanticShouldReturnAllDateInfoSmallYearPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingJBShouldNoSemanticReturnJulianDatePlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYPlusSemanticShouldReturnFullYear
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMDDPlusSemanticShouldReturnAllDateInfo
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYYYMMDDBPlusSemanticShouldReturnAllDateInfoPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMDDPlusSemanticShouldReturnAllDateInfoSmallYear
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingYYMMDDBPlusSemanticShouldReturnAllDateInfoSmallYearPlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenConvertingJBShouldPlusSemanticReturnJulianDatePlusBuildNumber
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFileTests.XmlGetPackageNuSpecFileTests_WhenValuesAreValidUsingWorkflowIndex0ShouldExtractXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFileTests.XmlGetPackageNuSpecFileTests_WhenIndexOutOfBoundsShouldThrowArgumentException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFileTests.XmlGetPackageNuSpecFileTests_WhenNuSpecElementNotIncludedShouldThrowArgumentException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenValuesAreValidShouldGetXmlValuesProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenValuesAreValidUsingWorkflowIndex0ShouldExtractXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenCallingElementsCountShouldReturnNumberOfNuGetterPackageElements
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenFullPathProvidedShouldFindVersionPattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenRelativePathProvidedShouldFindVersionPattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPassingNullVersionPatternOrSeedFilePathShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPassingNullPackageIdPathShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPassingNullSourcesDirectoryShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.CreateFolderTests.CreateFoldersTests_WhenCreatingRelativePathShouldUseDropLocation
+Passed                TfsBuild.NuGetter.Activities.Tests.CreateFolderTests.CreateFoldersTests_WhenCreatingRootedPathShouldNotUseDropLocation
+Passed                TfsBuild.NuGetter.Activities.Tests.CreateFolderTests.CreateFolderTests_WhenCreatingRelativePathUsingWorkflowShouldUseDropLocation
+Passed                TfsBuild.NuGetter.Activities.Tests.SummarizePropertiesTests.SummarizePropertiesTests_WhenShould
+Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileShouldReturnFilePath
+Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileAndMultiplesResultShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileAndNoneResultShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenPassingInEmptyValueForSearchPatternShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenPassingInEmptyValueForSearchFolderShouldThrowException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetElementTests.XmlGetElementTests_WhenValuesAreValidShouldGetXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetElementTests.XmlGetElementTests_WhenValuesAreValidUsingWorkflowShouldReplaceXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetElementTests.XmlGetElementTests_WhenUsingV14NuspecFileCheckedShouldGetValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetElementTests.XmlGetElementTests_WhenUsingV15NuspecFileCheckedShouldGetValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetElementTests.XmlGetElementTests_WhenUsingV15NuspecFileWithNoNamespaceShouldGetValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackagingMethodShouldFormatPackParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackMethodShouldThrowExceptionWithEmptyNuSpecFilePath
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackMethodShouldThrowExceptionWithEmptyNuGetOutputPath
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackMethodShouldThrowExceptionWithEmptyNuGetPackBasePath
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackMethodShouldThrowExceptionWithEmptyNuGetPackageLocation
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackMethodWithGoodUrlShouldPushWithoutApiKey
+Passed                TfsBuild.NuGetter.Activities.Tests.PowerShellScriptTests.PowerShellTests_WhenInvokingPowerShellScriptThroughWorkflowShouldCreateFoldersAsDirectedByScript
+Passed                TfsBuild.NuGetter.Activities.Tests.PowerShellScriptTests.PowerShellTests_WhenInvokingMoveFilesPowerShellScriptThroughWorkflowShouldCreateFoldersAndMoveFiles
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenValuesAreValidShouldReplaceXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenValuesAreValidUsingWorkflowShouldReplaceXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenValuesAreValidUsingWorkflowNoNamespaceShouldReplaceXmlValueProperly
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+58/59 test(s) Passed, 1 Failed
+
+Results               ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+-------               ------------------------------------------------------------------------
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Passed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+Failed                (BVT/)TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
+7/8 test(s) Passed, 1 Failed
+
+Results               ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+-------               ------------------------------------------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+Passed                TfsBuild.NuGetter.Activities.Tests.ConvertVersionPatternTests.ConvertVersionPatternTests_WhenPatternContainsBuildNumberPrefixShouldAddPrefixToLastVersionValue
+10/10 test(s) Passed
+
+Results               GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+-------               -----------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenPatternProvidedShouldReturnSamePattern
+12/12 test(s) Passed
+
+Results               GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+-------               ----------------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+Passed                TfsBuild.NuGetter.Activities.Tests.GetApiKeyTests.GetApiKeyTests_WhenGettingTheApiKeyShouldWorkWithFilesAndDirectKeyData
+8/8 test(s) Passed
+
+Results               CallNuGetPackageCommandLineTests_WhenCallingPackagingMethodShouldFormatPackParametersCorrectly
+-------               ----------------------------------------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPackagingMethodShouldFormatPackParametersCorrectly
+1/1 test(s) Passed
+
+Results               CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+-------               -----------------------------------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+Passed                TfsBuild.NuGetter.Activities.Tests.CallNuGetPackageCommandLineTests.CallNuGetPackageCommandLineTests_WhenCallingPushMethodShouldFormatPushParametersCorrectly
+8/8 test(s) Passed
+
+Results               XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+-------               -----------------------------------------------------------------------------------
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
+13/13 test(s) Passed
+
+Summary
+-------
+Test Run Failed.
+  Failed    2
+  Passed  117
+  -----------
+  Total   119
+Results file:  C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\TestResults\segilbert_USATLSEGILBERT4 2014-10-27 18_06_03.trx
+Test Settings: Trace and Test Impact
+
+Run has the following issue(s):
+Warning: Test Run deployment issue: The assembly or module 'Microsoft.TeamFoundation.TestPlatform.Client' directly or indirectly referenced by the test container 'f:\work\repos\git\nugetter\tfsbuild.nugetter.activities.tests\bin\debug\tfsbuild.nugetter.activities.tests.dll' was not found.
+Warning: Test Run deployment issue: The assembly or module 'Microsoft.VisualStudio.TestPlatform.ObjectModel' directly or indirectly referenced by the test container 'f:\work\repos\git\nugetter\tfsbuild.nugetter.activities.tests\bin\debug\tfsbuild.nugetter.activities.tests.dll' was not found.
+Warning: Test Run deployment issue: The assembly or module 'Microsoft.VisualStudio.Http' directly or indirectly referenced by the test container 'f:\work\repos\git\nugetter\tfsbuild.nugetter.activities.tests\bin\debug\tfsbuild.nugetter.activities.tests.dll' was not found.
+Warning: Test Run deployment issue: The assembly or module 'Microsoft.VisualStudio.TestPlatform.Utilities' directly or indirectly referenced by the test container 'f:\work\repos\git\nugetter\tfsbuild.nugetter.activities.tests\bin\debug\tfsbuild.nugetter.activities.tests.dll' was not found.
