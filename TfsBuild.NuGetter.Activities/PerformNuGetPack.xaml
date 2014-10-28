@@ -161,6 +161,7 @@
       <Variable x:TypeArguments="x:String" Name="NuGetterVNuGetExeConvertedFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="NuGetterVPackagingResult" />
       <Variable x:TypeArguments="x:String" Name="NuGetterVPackageFilePath" />
+      <Variable x:TypeArguments="x:String" Name="NuGetterVPackageFilePaths" />
       <Variable x:TypeArguments="x:Boolean" Name="NuGetterVDoPrePackaging" />
       <Variable x:TypeArguments="x:String" Name="NuGetterVDropLocation" />
       <Variable x:TypeArguments="x:Boolean" Name="NuGetterVDoPackaging" />
@@ -347,7 +348,7 @@
                       <Variable x:TypeArguments="x:String" Name="NuGetterVApiKeyFilePath" />
                     </Sequence.Variables>
                     <local:XmlGetElement DisplayName="Get NuGetterVPackageName" ElementValue="[NuGetterVPackageName]" FilePath="[NuGetterVNuSpecFilePath]" sap2010:WorkflowViewState.IdRef="XmlGetElement_1" XPathExpression="ns:package/ns:metadata/ns:id" XmlNamespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" XmlNamespacePrefix="ns" />
-                    <local:GetFileNameUsingPattern FileNamePattern="[String.Format(&quot;{0}*.nupkg&quot;, NuGetterVPackageName)]" FullFilePath="[NuGetterVPackageFilePath]" sap2010:WorkflowViewState.IdRef="GetFileNameUsingPattern_1" SearchFolder="[NuGetterVOutputFolderFullPath]" />
+                    <local:GetFileNameUsingPattern FileNamePattern="[String.Format(&quot;{0}*.nupkg&quot;, NuGetterVPackageName)]" FullFilePath="[NuGetterVPackageFilePath]" FullFilePaths="[NuGetterVPackageFilePaths]" sap2010:WorkflowViewState.IdRef="GetFileNameUsingPattern_1" SearchFolder="[NuGetterVOutputFolderFullPath]" />
                     <If Condition="[String.IsNullOrWhiteSpace(ApiKey)]" sap2010:WorkflowViewState.IdRef="If_11">
                       <If.Then>
                         <Assign x:TypeArguments="x:String" DisplayName="Set NugetterVApiKeyFilePath" sap2010:WorkflowViewState.IdRef="Assign`1_6" mtbwt:BuildTrackingParticipant.Importance="Low" To="[NuGetterVApiKeyFilePath]" Value="[String.Empty]" />
@@ -367,7 +368,7 @@
                       </If.Else>
                     </If>
                     <local:GetApiKey ApiKeyOrFile="[NuGetterVApiKeyFilePath]" ApiKeyValue="[NuGetterVApiKeyValue]" sap2010:WorkflowViewState.IdRef="GetApiKey_1" SourcesDirectory="[SourcesDirectory]" />
-                    <local:PushWithNuGet NuGetProcess="{x:Null}" ApiKey="[NuGetterVApiKeyValue]" sap2010:WorkflowViewState.IdRef="PushWithNuGet_1" NuGetExeFilePath="[NuGetterVNuGetExeConvertedFilePath]" NuGetPushResult="[NuGetterVPushResult]" PackageLocation="[NuGetterVPackageFilePath]" PushDestination="[PushDestination]" />
+                    <local:PushWithNuGet NuGetProcess="{x:Null}" ApiKey="[NuGetterVApiKeyValue]" sap2010:WorkflowViewState.IdRef="PushWithNuGet_1" NuGetExeFilePath="[NuGetterVNuGetExeConvertedFilePath]" NuGetPushResult="[NuGetterVPushResult]" PackageLocation="[NuGetterVPackageFilePath]" PackageLocations="[NuGetterVPackageFilePaths]" PushDestination="[PushDestination]" />
                     <If Condition="[NuGetterVPushResult = False]" DisplayName="If push fails then report partial failure on build" sap2010:WorkflowViewState.IdRef="If_12">
                       <If.Then>
                         <mtbwa:SetBuildProperties sap2010:WorkflowViewState.IdRef="SetBuildProperties_1" PropertiesToSet="Status" Status="[BuildStatus.PartiallySucceeded]" />

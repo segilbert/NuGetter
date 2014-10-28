@@ -5,7 +5,7 @@
     <NuGetPackBasePath>C:\BuildFolder\PackFolder</NuGetPackBasePath>
     <NuGetSpecFilePath>C:\BuildFolder\myproject.nuspec</NuGetSpecFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetVersion>1.2.3.4</NuGetVersion>
   </PackTest>
 
@@ -13,14 +13,14 @@
   <PushTest>
     <NuGetFilePath>C:\Nuget\NuGet.exe</NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey>C4E9B6FC-FFFF-FFFF-FFFF-7BFEF689B33C</ApiKey>
   </PushTest>
   <PushTest>
     <NuGetFilePath></NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey>C4E9B6FC-FFFF-FFFF-FFFF-7BFEF689B33C</ApiKey>
   </PushTest>
@@ -28,14 +28,14 @@
   <PushTest>
     <NuGetFilePath>C:\Nuget\NuGet.exe</NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey></ApiKey>
   </PushTest>
   <PushTest>
     <NuGetFilePath></NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey></ApiKey>
   </PushTest>
@@ -43,14 +43,14 @@
   <PushTest>
     <NuGetFilePath>C:\Nuget\NuGet.exe</NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey>C4E9B6FC-FFFF-FFFF-FFFF-7BFEF689B33C</ApiKey>
   </PushTest>
   <PushTest>
     <NuGetFilePath></NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey>C4E9B6FC-FFFF-FFFF-FFFF-7BFEF689B33C</ApiKey>
   </PushTest>
@@ -58,17 +58,16 @@
   <PushTest>
     <NuGetFilePath>C:\Nuget\NuGet.exe</NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey></ApiKey>
   </PushTest>
   <PushTest>
     <NuGetFilePath></NuGetFilePath>
     <NuGetOutputPath>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPath>
-    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg</NuGetOutputPaths>
+    <NuGetOutputPaths>C:\BuildFolder\NuGetPackage\mytest.x86.nupkg,C:\BuildFolder\NuGetPackage\mytest.x64.nupkg</NuGetOutputPaths>
     <NuGetPushDestination>http://localhost/InternalNuget</NuGetPushDestination>
     <ApiKey></ApiKey>
   </PushTest>
- 
 </GetApiKeyData>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Activities;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,11 @@ namespace TfsBuild.NuGetter.Activities
         /// </summary>
         public OutArgument<string> FullFilePath { get; set; }
 
+        /// <summary>
+        /// The full file name and path from a successful search
+        /// </summary>
+        public OutArgument<string> FullFilePaths { get; set; }
+
         #endregion
 
         /// <summary>
@@ -59,12 +65,47 @@ namespace TfsBuild.NuGetter.Activities
             // get the value of the FilePath
             var searchFolder = SearchFolder.Get(context);
 
+            var filePaths = FindFiles(fileNamePattern, searchFolder);
+            FullFilePaths.Set(context, filePaths);
+
             var filePath = FindFile(fileNamePattern, searchFolder);
+
+            context.WriteBuildMessage(string.Format("ActivityInstanceId .. {0}", context.ActivityInstanceId), BuildMessageImportance.High);
+            context.WriteBuildMessage(string.Format("GetType .. {0}", context.GetType()), BuildMessageImportance.High);
 
             context.WriteBuildMessage(string.Format("Path found: {0}", filePath), BuildMessageImportance.High);
 
             // return the value 
             FullFilePath.Set(context, filePath);
+        }
+
+        public string FindFiles(string fileNamePattern, string searchFolder)
+        {
+            #region Parameter Validation
+
+            // validate that there is a file pattern to work with
+            if (String.IsNullOrWhiteSpace(fileNamePattern))
+            {
+                throw new ArgumentException("FileNamePattern must contain a search pattern");
+            }
+
+            // Validate that there is a search folder for the search
+            if (String.IsNullOrWhiteSpace(searchFolder))
+            {
+                throw new ArgumentException("searchFolder");
+            }
+
+            #endregion
+
+            var fileList = String.Join(",",Directory.EnumerateFiles(searchFolder, fileNamePattern));
+
+            if (fileList.Length == 0)
+            {
+                var exMessage = string.Format("Search pattern '{0}' did not find any files at: {1}", fileNamePattern,
+                    searchFolder);
+                throw new ArgumentException(exMessage);
+            }
+            return fileList;
         }
 
         public string FindFile(string fileNamePattern, string searchFolder)
