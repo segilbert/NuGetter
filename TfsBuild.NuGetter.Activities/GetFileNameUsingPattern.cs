@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Activities;
+using System.Activities.Debugger;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -67,16 +68,6 @@ namespace TfsBuild.NuGetter.Activities
 
             var filePaths = FindFiles(fileNamePattern, searchFolder);
             FullFilePaths.Set(context, filePaths);
-
-            var filePath = FindFile(fileNamePattern, searchFolder);
-
-            context.WriteBuildMessage(string.Format("ActivityInstanceId .. {0}", context.ActivityInstanceId), BuildMessageImportance.High);
-            context.WriteBuildMessage(string.Format("GetType .. {0}", context.GetType()), BuildMessageImportance.High);
-
-            context.WriteBuildMessage(string.Format("Path found: {0}", filePath), BuildMessageImportance.High);
-
-            // return the value 
-            FullFilePath.Set(context, filePath);
         }
 
         public string FindFiles(string fileNamePattern, string searchFolder)
