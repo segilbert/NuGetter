@@ -52,14 +52,14 @@
     <AdditionalOptions>AdditionalOptions5</AdditionalOptions>
     <BasePath>BasePath5</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>false</SwitchInvokePush>
+    <InvokePush>false</InvokePush>
   </NuGetterPackage>
   <NuGetterPackage name="Package 6">
     <NuSpecFilePath>NuSpecFilePath6</NuSpecFilePath>
     <AdditionalOptions>AdditionalOptions6</AdditionalOptions>
     <BasePath>BasePath6</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>false</SwitchInvokePush>
+    <InvokePush>false</InvokePush>
     <OutputDirectory>OutputDirectory6</OutputDirectory>
   </NuGetterPackage>
   <NuGetterPackage name="Package 7">
@@ -67,7 +67,7 @@
     <AdditionalOptions>AdditionalOptions7</AdditionalOptions>
     <BasePath>BasePath7</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>false</SwitchInvokePush>
+    <InvokePush>false</InvokePush>
     <OutputDirectory>OutputDirectory7</OutputDirectory>
     <PowerShellScriptPath>PowerShellScriptPath7</PowerShellScriptPath>
   </NuGetterPackage>
@@ -76,7 +76,7 @@
     <AdditionalOptions>AdditionalOptions8</AdditionalOptions>
     <BasePath>BasePath8</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>false</SwitchInvokePush>
+    <InvokePush>false</InvokePush>
     <OutputDirectory>OutputDirectory8</OutputDirectory>
     <PowerShellScriptPath>PowerShellScriptPath8</PowerShellScriptPath>
     <PushDestination>PushDestination8</PushDestination>
@@ -86,7 +86,7 @@
     <AdditionalOptions>AdditionalOptions9</AdditionalOptions>
     <BasePath>BasePath9</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>true</SwitchInvokePush>
+    <InvokePush>true</InvokePush>
     <OutputDirectory>OutputDirectory9</OutputDirectory>
     <PowerShellScriptPath>PowerShellScriptPath9</PowerShellScriptPath>
     <PushDestination>PushDestination9</PushDestination>

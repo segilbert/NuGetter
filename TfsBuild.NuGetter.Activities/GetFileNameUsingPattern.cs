@@ -31,9 +31,6 @@ namespace TfsBuild.NuGetter.Activities
         #region Workflow Arguments
 
         [RequiredArgument]
-        public InArgument<string> NuSpecFilePath { get; set; }
-
-        [RequiredArgument]
         public InArgument<string> PackageName { get; set; }
 
         /// <summary>
@@ -41,12 +38,6 @@ namespace TfsBuild.NuGetter.Activities
         /// </summary>
         [RequiredArgument]
         public InArgument<string> FileNamePattern { get; set; }
-
-        /// <summary>
-        /// Pattern to use for retrieving an actual filename
-        /// </summary>
-        [RequiredArgument]
-        public InArgument<string> FileNameDefaultPattern { get; set; }
 
         /// <summary>
         /// Folder to search for the file using the pattern
@@ -62,11 +53,7 @@ namespace TfsBuild.NuGetter.Activities
 
         [RequiredArgument]
         public InArgument<string> Version { get; set; }
-
-        private string _packageName = string.Empty;
-        private string _version = string.Empty;
-
-
+        
         #endregion
         
         /// <summary>
@@ -78,38 +65,17 @@ namespace TfsBuild.NuGetter.Activities
             // get the value of the XPathExpression
             var fileNamePattern = FileNamePattern.Get(context);
 
-            var fileNameDefaultPattern = FileNameDefaultPattern.Get(context);
-
             // get the value of the FilePath
             var searchFolder = SearchFolder.Get(context);
-            
-            // package name
-            _packageName = PackageName.Get(context);
-            _version = Version.Get(context);
-
-            // nuspec file path
-            string nuSpecFilePath = NuSpecFilePath.Get(context);
-            
-            // build name of nuget file from nuspec naming conventions
-            // override fileNamePattern
-            string pattern = string.Format("{0}.*", _packageName);
-            var regex = new Regex(pattern,RegexOptions.IgnoreCase);
-            fileNamePattern = regex.Match(nuSpecFilePath).Value.Replace(".nuspec", ".nupkg");
-            
-            FileNamePattern.Set(context, fileNamePattern);
-
-            var filePaths = FindFile(fileNameDefaultPattern, fileNamePattern, searchFolder);
+           
+           
+            var filePaths = FindFile(fileNamePattern, searchFolder);
             FullFilePath.Set(context, filePaths);
         }
 
-        public string FindFile(string fileNameDefaultPattern, string fileNamePattern, string searchFolder)
+        public string FindFile(string fileNamePattern, string searchFolder)
         {
             #region Parameter Validation
-
-            if (String.IsNullOrWhiteSpace(fileNameDefaultPattern))
-            {
-                throw new ArgumentException("FileNameDefaultPattern must contain a search pattern");
-            }
 
             // validate that there is a file pattern to work with
             if (String.IsNullOrWhiteSpace(fileNamePattern))
@@ -125,14 +91,7 @@ namespace TfsBuild.NuGetter.Activities
 
             #endregion
 
-            var searchPattern = fileNamePattern;
             var fileList = Directory.EnumerateFiles(searchFolder, fileNamePattern).ToArray();
-
-            if (fileList.Length != 1 )
-            {
-                fileList = Directory.EnumerateFiles(searchFolder, fileNameDefaultPattern).ToArray();
-                searchPattern = fileNameDefaultPattern;
-            }
 
             if (fileList.Length == 1)
             {
@@ -140,8 +99,8 @@ namespace TfsBuild.NuGetter.Activities
             }
 
             var exMessage = fileList.Length > 1 ?
-                string.Format("Search pattern '{0}' retrieved more than one file at: {1}", searchPattern, searchFolder) :
-                string.Format("Search pattern '{0}' did not find any files at: {1}", searchPattern, searchFolder);
+                string.Format("Search pattern '{0}' retrieved more than one file at: {1}", fileNamePattern, searchFolder) :
+                string.Format("Search pattern '{0}' did not find any files at: {1}", fileNamePattern, searchFolder);
 
             throw new ArgumentException(exMessage);
         }

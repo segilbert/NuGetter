@@ -347,7 +347,7 @@
                       <Variable x:TypeArguments="x:String" Name="NuGetterVApiKeyFilePath" />
                     </Sequence.Variables>
                     <local:XmlGetElement DisplayName="Get NuGetterVPackageName" ElementValue="[NuGetterVPackageName]" FilePath="[NuGetterVNuSpecFilePath]" sap2010:WorkflowViewState.IdRef="XmlGetElement_1" XPathExpression="ns:package/ns:metadata/ns:id" XmlNamespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd" XmlNamespacePrefix="ns" />
-                    <local:GetFileNameUsingPattern NuSpecFilePath="[NuGetterVNuSpecFilePath]" PackageName="[NuGetterVPackageName]" Version="[Version]" FileNamePattern="" FileNameDefaultPattern="[String.Format(&quot;{0}.{1}.nupkg&quot;, NuGetterVPackageName, Version)]" FullFilePath="[NuGetterVPackageFilePath]" sap2010:WorkflowViewState.IdRef="GetFileNameUsingPattern_1" SearchFolder="[NuGetterVOutputFolderFullPath]" />
+                    <local:GetFileNameUsingPattern PackageName="[NuGetterVPackageName]" Version="[Version]" FileNamePattern="[String.Format(&quot;{0}.{1}.nupkg&quot;, NuGetterVPackageName, Version)]" FullFilePath="[NuGetterVPackageFilePath]" sap2010:WorkflowViewState.IdRef="GetFileNameUsingPattern_1" SearchFolder="[NuGetterVOutputFolderFullPath]" />
                     <If Condition="[String.IsNullOrWhiteSpace(ApiKey)]" sap2010:WorkflowViewState.IdRef="If_11">
                       <If.Then>
                         <Assign x:TypeArguments="x:String" DisplayName="Set NugetterVApiKeyFilePath" sap2010:WorkflowViewState.IdRef="Assign`1_6" mtbwt:BuildTrackingParticipant.Importance="Low" To="[NuGetterVApiKeyFilePath]" Value="[String.Empty]" />

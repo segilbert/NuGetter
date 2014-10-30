@@ -29,7 +29,7 @@ Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFile
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFileTests.XmlGetPackageNuSpecFileTests_WhenIndexOutOfBoundsShouldThrowArgumentException
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageNuSpecFileTests.XmlGetPackageNuSpecFileTests_WhenNuSpecElementNotIncludedShouldThrowArgumentException
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenValuesAreValidShouldGetXmlValuesProperly
-Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenValuesAreValidUsingWorkflowIndex0ShouldExtractXmlValueProperly
+Failed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenValuesAreValidUsingWorkflowIndex0ShouldExtractXmlValueProperly
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenCallingTest
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlGetPackageElementsTests.XmlGetPackageElementsTests_WhenCallingElementsCountShouldReturnNumberOfNuGetterPackageElements
 Passed                TfsBuild.NuGetter.Activities.Tests.GetVersionPatternTests.GetVersionPatternTests_WhenFullPathProvidedShouldFindVersionPattern
@@ -43,9 +43,7 @@ Passed                TfsBuild.NuGetter.Activities.Tests.CreateFolderTests.Creat
 Passed                TfsBuild.NuGetter.Activities.Tests.CreateFolderTests.CreateFolderTests_WhenCreatingRelativePathUsingWorkflowShouldUseDropLocation
 Passed                TfsBuild.NuGetter.Activities.Tests.SummarizePropertiesTests.SummarizePropertiesTests_WhenShould
 Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileShouldReturnFilePath
-Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileMissSearchButHitDefaultShouldReturnFilePath
 Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileAndMultiplesResultShouldThrowException
-Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileOnBothChecksAndMultiplesResultShouldThrowException
 Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenSearchingForASingleFileAndNoneResultShouldThrowException
 Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenPassingInEmptyValueForSearchPatternShouldThrowException
 Passed                TfsBuild.NuGetter.Activities.Tests.GetFileNameUsingPatternTests.GetFileNameUsingPatternTests_WhenPassingInEmptyValueForSearchFolderShouldThrowException
@@ -67,7 +65,7 @@ Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.X
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenValuesAreValidUsingWorkflowShouldReplaceXmlValueProperly
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenValuesAreValidUsingWorkflowNoNamespaceShouldReplaceXmlValueProperly
 Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.XmlUpdateElementTests_WhenEmptyParametersArePassedInShouldThrowAppropriateException
-61/61 test(s) Passed
+58/59 test(s) Passed, 1 Failed
 
 Results               ConvertVersionPatternTests_WhenTestingGoodPatternsShouldValidateProperly
 -------               ------------------------------------------------------------------------
@@ -147,11 +145,12 @@ Passed                TfsBuild.NuGetter.Activities.Tests.XmlUpdateElementTests.X
 
 Summary
 -------
-Test Run Warning.
-  Passed  113
+Test Run Failed.
+  Passed  110
+  Failed    1
   -----------
-  Total   113
-Results file:  C:\data\chocolatey\lib\console2.2.0.148\bin\TestResults\segilbert_USATLSEGILBERT4 2014-10-29 23_33_54.trx
+  Total   111
+Results file:  C:\data\chocolatey\lib\console2.2.0.148\bin\TestResults\segilbert_USATLSEGILBERT4 2014-10-30 06_31_05.trx
 Test Settings: Trace and Test Impact
 
 Run has the following issue(s):

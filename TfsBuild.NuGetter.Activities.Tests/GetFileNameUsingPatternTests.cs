@@ -29,30 +29,13 @@ namespace TfsBuild.NuGetter.Activities.Tests
         {
             var getFileNameUsingPattern = new GetFileNameUsingPattern();
 
-            File.Copy("TestLib.nuspec", "FileSearch0.nuspec", true);
+            File.Copy("TestLib.nuspec", "FileSearch0.nuspec");
 
-            var fileNameDefaultPattern = string.Format("{0}*.nuspec", "FileSearch0");
-
-            var filePath = getFileNameUsingPattern.FindFile(fileNameDefaultPattern, "FileSearch0*.nuspec", TestContext.DeploymentDirectory);
+            var filePath = getFileNameUsingPattern.FindFile("FileSearch0*.nuspec", TestContext.DeploymentDirectory);
 
             Assert.AreEqual(Path.Combine(TestContext.DeploymentDirectory, "FileSearch0.nuspec"), filePath);
         }
-
-        [TestMethod]
-        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\TestLib.nuspec")]
-        public void GetFileNameUsingPatternTests_WhenSearchingForASingleFileMissSearchButHitDefaultShouldReturnFilePath()
-        {
-            var getFileNameUsingPattern = new GetFileNameUsingPattern();
-
-            File.Copy("TestLib.nuspec", "FileSearch0.nuspec",true);
-
-            var fileNameDefaultPattern = string.Format("{0}*.nuspec", "FileSearch0");
-
-            var filePath = getFileNameUsingPattern.FindFile(fileNameDefaultPattern, "FileSearch.0.1.0*.nuspec", TestContext.DeploymentDirectory);
-
-            Assert.AreEqual(Path.Combine(TestContext.DeploymentDirectory, "FileSearch0.nuspec"), filePath);
-        }
-
+        
         [TestMethod]
         [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\TestLib.nuspec")]
         [ExpectedException(typeof(ArgumentException))]
@@ -60,27 +43,10 @@ namespace TfsBuild.NuGetter.Activities.Tests
         {
             var getFileNameUsingPattern = new GetFileNameUsingPattern();
 
-            File.Copy("TestLib.nuspec", "FileSearch1.test.nuspec",true);
-            File.Copy("TestLib.nuspec", "FileSearch1.nuspec", true);
+            File.Copy("TestLib.nuspec", "FileSearch1.test.nuspec");
+            File.Copy("TestLib.nuspec", "FileSearch1.nuspec");
 
-            var fileNameDefaultPattern = string.Format("{0}*.nuspec", "FileSearch");
-
-            getFileNameUsingPattern.FindFile(fileNameDefaultPattern, "FileSearch1*.nuspec", TestContext.DeploymentDirectory);
-        }
-
-        [TestMethod]
-        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\TestLib.nuspec")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetFileNameUsingPatternTests_WhenSearchingForASingleFileOnBothChecksAndMultiplesResultShouldThrowException()
-        {
-            var getFileNameUsingPattern = new GetFileNameUsingPattern();
-
-            File.Copy("TestLib.nuspec", "FileSearch1.test.nuspec", true);
-            File.Copy("TestLib.nuspec", "FileSearch1.nuspec", true);
-
-            var fileNameDefaultPattern = string.Format("{0}*.nuspec", "FileSearch1");
-
-            getFileNameUsingPattern.FindFile(fileNameDefaultPattern, "FileSearch1*.nuspec", TestContext.DeploymentDirectory);
+            getFileNameUsingPattern.FindFile("FileSearch1*.nuspec", TestContext.DeploymentDirectory);
         }
 
         [TestMethod]
@@ -89,7 +55,7 @@ namespace TfsBuild.NuGetter.Activities.Tests
         {
             var getFileNameUsingPattern = new GetFileNameUsingPattern();
 
-            getFileNameUsingPattern.FindFile("NoWayThisWillResult.InASuccess", "NoWayThisWillResult.InASuccess", TestContext.DeploymentDirectory);
+            getFileNameUsingPattern.FindFile("NoWayThisWillResult.InASuccess", TestContext.DeploymentDirectory);
         }
 
         [TestMethod]
@@ -98,7 +64,7 @@ namespace TfsBuild.NuGetter.Activities.Tests
         {
             var getFileNameUsingPattern = new GetFileNameUsingPattern();
 
-            getFileNameUsingPattern.FindFile(string.Empty, string.Empty, TestContext.DeploymentDirectory);
+            getFileNameUsingPattern.FindFile(string.Empty, TestContext.DeploymentDirectory);
         }
 
         [TestMethod]
@@ -107,7 +73,7 @@ namespace TfsBuild.NuGetter.Activities.Tests
         {
             var getFileNameUsingPattern = new GetFileNameUsingPattern();
 
-            getFileNameUsingPattern.FindFile("file*.pattern", "file*.pattern", string.Empty);
+            getFileNameUsingPattern.FindFile("file*.pattern", string.Empty);
         }
 
 

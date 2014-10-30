@@ -137,7 +137,7 @@ namespace TfsBuild.NuGetter.Activities
                                            let version = xml.Element("Version")
 
                                            let outputDirectory = xml.Element("OutputDirectory")
-                                           let switchInvokePush = xml.Element("SwitchInvokePush")
+                                           let switchInvokePush = xml.Element("InvokePush")
                                            let pushDestination = xml.Element("PushDestination")
                                            let switchInvokePowerShell = xml.Element("InvokePowerShell")
 
