@@ -13,9 +13,9 @@ namespace TfsBuild.NuGetter.Activities.Tests
 
         public const string NuGetFile = "NuGet.exe";
         public const string NuGetPackBasePath = "C:\\BuildFolder\\PackFolder";
-        public const string NuGetSpecFilePath = "C:\\BuildFolder\\myproject.nuspec";
+        public const string NuGetSpecFilePath = "C:\\BuildFolder\\myproject.1.2.3.4.nuspec";
         public const string NuGetOutputPath = "C:\\BuildFolder\\NuGetPackage";
-        public const string NuGetPackageLocation = "C:\\BuildFolder\\NuGetPackage\\mytest.x86.nupkg";
+        public const string NuGetPackageLocation = "C:\\BuildFolder\\NuGetPackage\\myproject.1.2.3.4.nupkg";
         public const string NuGetPushDestination = "http://localhost/InternalNuget";
         public const string ApiKey = "C4E9B6FC-FFFF-FFFF-FFFF-7BFEF689B33C";
         public const string NuGetVersion = "1.2.3.4";
@@ -48,136 +48,12 @@ namespace TfsBuild.NuGetter.Activities.Tests
 
             callNuGetPackageCommandLine.NuGetPackaging(nuGetFilePath, nuGetSpecFilePath, nuGetOutputPath, nuGetPackBasePath, nuGetVersion, string.Empty, null);
 
-            const string expectedResult = "pack \"C:\\BuildFolder\\myproject.nuspec\" -OutputDirectory \"C:\\BuildFolder\\NuGetPackage\\mytest.x86.nupkg\" -BasePath \"C:\\BuildFolder\\PackFolder\" -version 1.2.3.4";
+            const string expectedResult = "pack \"C:\\BuildFolder\\myproject.1.2.3.4.nuspec\" -OutputDirectory \"C:\\BuildFolder\\NuGetPackage\" -BasePath \"C:\\BuildFolder\\PackFolder\" -version 1.2.3.4";
 
             //Assert.AreEqual(NuGetFilePath, testNuGetProcess.NuGetFilePath);
             Assert.AreEqual(expectedResult, testNuGetProcess.Arguments.Trim());
         }
         
-
-        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\PackPushTestData.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\PackPushTestData.xml", "PushTest", DataAccessMethod.Sequential)]
-        [TestMethod]
-        public void CallNuGetPackageCommandLineTests_WhenCallingPushMethodWithMultipleNugetsShouldFormatPushParametersCorrectly()
-        {
-            var nuGetFilePath = string.Empty;
-
-            if (!string.IsNullOrWhiteSpace(TestContext.DataRow["NuGetFilePath"].ToString()))
-            {
-                nuGetFilePath = GetNugetFilePath(TestContext.DeploymentDirectory);
-            }
-
-            var nuGetPushDestination = TestContext.DataRow["NuGetPushDestination"].ToString();
-            var nuGetPackageLocation = TestContext.DataRow["NuGetOutputPath"].ToString();
-            var nuGetPackageLocations = TestContext.DataRow["NuGetOutputPaths"].ToString();
-
-            var apiKey = TestContext.DataRow["ApiKey"].ToString();
-
-            var testNuGetProcess = new TestNuGetProcess();
-
-            var pushWithNuGet = new PushWithNuGet { NuGetProcess = testNuGetProcess };
-
-            if (string.IsNullOrWhiteSpace(nuGetFilePath))
-            {
-                nuGetFilePath = "nuget.exe";
-            }
-
-            pushWithNuGet.NuGetPublishing(nuGetFilePath, nuGetPackageLocation, nuGetPackageLocations, nuGetPushDestination, apiKey, null);
-
-            var locations = nuGetPackageLocations.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            var expectedResult = string.Empty;
-            foreach (var location in locations)
-            {
-                expectedResult = string.Format("push \"{0}\" {1} -s \"{2}\"",
-                    location, apiKey, nuGetPushDestination);
-            }
-
-            // Test last run in multi
-            Assert.AreEqual(expectedResult, testNuGetProcess.Arguments);
-        }
-
-        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\PackPushMultipleDoubleTestData.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\PackPushTestData.xml", "PushTest", DataAccessMethod.Sequential)]
-        [TestMethod]
-        public void CallNuGetPackageCommandLineTests_WhenCallingPushMethodWithMultipleDoubleNugetsShouldFormatPushParametersCorrectly()
-        {
-            var nuGetFilePath = string.Empty;
-
-            if (!string.IsNullOrWhiteSpace(TestContext.DataRow["NuGetFilePath"].ToString()))
-            {
-                nuGetFilePath = GetNugetFilePath(TestContext.DeploymentDirectory);
-            }
-
-            var nuGetPushDestination = TestContext.DataRow["NuGetPushDestination"].ToString();
-            var nuGetPackageLocation = TestContext.DataRow["NuGetOutputPath"].ToString();
-            var nuGetPackageLocations = TestContext.DataRow["NuGetOutputPaths"].ToString();
-
-            var apiKey = TestContext.DataRow["ApiKey"].ToString();
-
-            var testNuGetProcess = new TestNuGetProcess();
-
-            var pushWithNuGet = new PushWithNuGet { NuGetProcess = testNuGetProcess };
-
-            if (string.IsNullOrWhiteSpace(nuGetFilePath))
-            {
-                nuGetFilePath = "nuget.exe";
-            }
-
-            pushWithNuGet.NuGetPublishing(nuGetFilePath, nuGetPackageLocation, nuGetPackageLocations, nuGetPushDestination, apiKey, null);
-
-            var locations = nuGetPackageLocations.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            var expectedResult = string.Empty;
-            foreach (var location in locations)
-            {
-                expectedResult = string.Format("push \"{0}\" {1} -s \"{2}\"",
-                    location, apiKey, nuGetPushDestination);
-            }
-
-            // Test last run in multi
-            Assert.AreEqual(expectedResult, testNuGetProcess.Arguments);
-        }
-
-        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\PackPushMultipleTripleTestData.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\PackPushTestData.xml", "PushTest", DataAccessMethod.Sequential)]
-        [TestMethod]
-        public void CallNuGetPackageCommandLineTests_WhenCallingPushMethodWithMultipleTripleNugetsShouldFormatPushParametersCorrectly()
-        {
-            var nuGetFilePath = string.Empty;
-
-            if (!string.IsNullOrWhiteSpace(TestContext.DataRow["NuGetFilePath"].ToString()))
-            {
-                nuGetFilePath = GetNugetFilePath(TestContext.DeploymentDirectory);
-            }
-
-            var nuGetPushDestination = TestContext.DataRow["NuGetPushDestination"].ToString();
-            var nuGetPackageLocation = TestContext.DataRow["NuGetOutputPath"].ToString();
-            var nuGetPackageLocations = TestContext.DataRow["NuGetOutputPaths"].ToString();
-
-            var apiKey = TestContext.DataRow["ApiKey"].ToString();
-
-            var testNuGetProcess = new TestNuGetProcess();
-
-            var pushWithNuGet = new PushWithNuGet { NuGetProcess = testNuGetProcess };
-
-            if (string.IsNullOrWhiteSpace(nuGetFilePath))
-            {
-                nuGetFilePath = "nuget.exe";
-            }
-
-            pushWithNuGet.NuGetPublishing(nuGetFilePath, nuGetPackageLocation, nuGetPackageLocations, nuGetPushDestination, apiKey, null);
-
-            var locations = nuGetPackageLocations.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            var expectedResult = string.Empty;
-            foreach (var location in locations)
-            {
-                expectedResult = string.Format("push \"{0}\" {1} -s \"{2}\"",
-                    location, apiKey, nuGetPushDestination);
-            }
-
-            // Test last run in multi
-            Assert.AreEqual(expectedResult, testNuGetProcess.Arguments);
-        }
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void CallNuGetPackageCommandLineTests_WhenCallingPackMethodShouldThrowExceptionWithEmptyNuSpecFilePath()

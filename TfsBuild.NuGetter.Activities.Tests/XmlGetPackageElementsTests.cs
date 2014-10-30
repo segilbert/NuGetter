@@ -1,4 +1,5 @@
 ﻿using System.Activities;
+using System.Activities.Expressions;
 using System.Linq;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,7 +33,6 @@ namespace TfsBuild.NuGetter.Activities.Tests
             var nuGetterElements = new XmlGetPackageElements();
 
             Assert.IsNotNull(nuGetterElements);
-            //var projectInfo = nuGetterElements.Execute("NuGetMultiProjectPkgInfo.xml", 0);
         }
 
 
@@ -58,7 +58,7 @@ namespace TfsBuild.NuGetter.Activities.Tests
                                            let switchInvokePowerShell = xml.Element("InvokePowerShell")
 
 
-                                           select new NuGetterPackageInfoTest
+                                           select new NuGetterPackageInfo
                                            {
                                                Name = name == null ? string.Empty : name.Value,
                                                AdditionalOptions = addnlOptionsElement == null ? null : addnlOptionsElement.Value,
@@ -68,9 +68,9 @@ namespace TfsBuild.NuGetter.Activities.Tests
                                                Version = version == null ? null : version.Value,
 
                                                OutputDirectory = outputDirectory == null ? null : outputDirectory.Value,
-                                               SwitchInvokePush = switchInvokePush == null ? null : switchInvokePush.Value,
+                                               SwitchInvokePush = switchInvokePush == null ? false : bool.Parse(switchInvokePush.Value),
                                                PushDestination = pushDestination == null ? null : pushDestination.Value,
-                                               SwitchInvokePowerShell = switchInvokePowerShell == null ? null : switchInvokePowerShell.Value,
+                                               SwitchInvokePowerShell = switchInvokePowerShell == null ? false : bool.Parse(switchInvokePowerShell.Value),
 
                                            }).ToList();
 
@@ -106,8 +106,8 @@ namespace TfsBuild.NuGetter.Activities.Tests
                 string expectedAdditionalOptions;
                 string expectedBasePath;
 
-                string expectedInvokePowerShell;
-                string expectedInvokePush;
+                bool expectedInvokePowerShell;
+                bool expectedInvokePush;
                 string expectedOutputDirectory;
                 string expectedPowerShellScriptPath;
                 string expectedPushDestination;
@@ -133,8 +133,9 @@ namespace TfsBuild.NuGetter.Activities.Tests
                     expectedBasePath = "BldDefBasePath";
                 }
 
-                expectedInvokePowerShell = i > 3 ? "false" : "true";
-                expectedInvokePush = i > 4 ? "false" : "true";
+                expectedInvokePowerShell = i <= 3;
+                expectedInvokePush = i <= 4 || i == 9;
+
 
                 
                 if (i > 5)
@@ -173,20 +174,47 @@ namespace TfsBuild.NuGetter.Activities.Tests
                     expectedVersion = "BldDefVersion";
                 }
 
-                Assert.AreEqual(expectedAdditionalOptions, output["AdditionalOptions"]);
-                Assert.AreEqual(expectedBasePath, output["BasePath"]);
-                Assert.AreEqual(expectedInvokePowerShell, output["SwitchInvokePowerShell"].ToString().ToLower());
-                Assert.AreEqual(expectedInvokePush, output["SwitchInvokePush"].ToString().ToLower());
-                Assert.AreEqual(expectedOutputDirectory, output["OutputDirectory"]);
-                Assert.AreEqual(expectedPowerShellScriptPath, output["PowerShellScriptPath"]);
-                Assert.AreEqual(expectedPushDestination, output["PushDestination"]);
-                Assert.AreEqual(expectedVersion, output["Version"]);
-                Assert.AreEqual("NuSpecFilePath" + i, nuSpecFilePathOut);
+                Assert.AreEqual(expectedAdditionalOptions, output["AdditionalOptions"].ToString());
+                Assert.AreEqual(expectedBasePath, output["BasePath"].ToString());
+                Assert.AreEqual(expectedInvokePowerShell, output["SwitchInvokePowerShell"]);
+                Assert.AreEqual(expectedInvokePush, output["SwitchInvokePush"]);
+                Assert.AreEqual(expectedOutputDirectory, output["OutputDirectory"].ToString());
+                Assert.AreEqual(expectedPowerShellScriptPath, output["PowerShellScriptPath"].ToString());
+                Assert.AreEqual(expectedPushDestination, output["PushDestination"].ToString());
+                Assert.AreEqual(expectedVersion, output["Version"].ToString());
+                Assert.AreEqual("NuSpecFilePath" + i, nuSpecFilePathOut.ToString());
                 
             }
 
         }
 
+        [TestMethod]
+        [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\NuGetMultiProjectPkgInfo.xml")]
+        public void XmlGetPackageElementsTests_WhenCallingTest()
+        {
+            //var nuGetterElements = new XmlGetPackageElements();
+
+            //// get the value of the FilePath
+            //var packageInfoFilePath = context.GetValue(PackageInfoFilePath);
+            //var packageIndex = context.GetValue(PackageIndex);
+
+            //var outputDirectoryFromBldDef = context.GetValue(OutputDirectoryFromBldDef);
+            //var switchInvokePushFromBldDef = context.GetValue(SwitchInvokePushFromBldDef);
+            //var pushDestinationFromBldDef = context.GetValue(PushDestinationFromBldDef);
+            //var switchInvokePowerShellFromBldDef = context.GetValue(SwitchInvokePowerShellFromBldDef);
+            //var versionFromBldDef = context.GetValue(VersionFromBldDef);
+
+            //var basePathFromBldDef = context.GetValue(BasePathFromBldDef);
+            //var additionalOptionsFromBldDef = context.GetValue(AdditionalOptionsFromBldDef);
+            //var powerShellScriptPathFromBldDef = context.GetValue(PowerShellScriptPathFromBldDef);
+
+            //var nuGetterPackageInfoResult = nuGetterElements.Execute(packageInfoFilePath, packageIndex, basePathFromBldDef, additionalOptionsFromBldDef,
+            //    outputDirectoryFromBldDef, switchInvokePushFromBldDef,
+            //    pushDestinationFromBldDef, switchInvokePowerShellFromBldDef, powerShellScriptPathFromBldDef, versionFromBldDef);
+
+            // Assert
+            
+        }
 
         [TestMethod]
         [DeploymentItem("TfsBuild.NuGetter.Activities.Tests\\TestData\\NuGetMultiProjectPkgInfo.xml")]
@@ -201,18 +229,4 @@ namespace TfsBuild.NuGetter.Activities.Tests
 
     }
 
-
-    public class NuGetterPackageInfoTest
-    {
-        public string Name { get; set; }
-        public string AdditionalOptions { get; set; }
-        public string BasePath { get; set; }
-        public string NuSpecFilePath { get; set; }
-        public string PowerShellScriptPath { get; set; }
-        public string Version { get; set; }
-        public string OutputDirectory { get; set; }
-        public string SwitchInvokePush { get; set; }
-        public string PushDestination { get; set; }
-        public string SwitchInvokePowerShell { get; set; }
-    }
 }

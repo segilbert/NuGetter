@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="BuildContextExtensions.cs" />
     <Compile Include="ConvertVersionPattern.cs" />
+    <Compile Include="NuGetterPackageInfo.cs" />
     <Compile Include="XmlGetPackageNuSpecFile.cs" />
     <Compile Include="XmlGetPackageElementsCount.cs" />
     <Compile Include="XmlGetPackageElements.cs" />

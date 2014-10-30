@@ -86,7 +86,7 @@
     <AdditionalOptions>AdditionalOptions9</AdditionalOptions>
     <BasePath>BasePath9</BasePath>
     <InvokePowerShell>false</InvokePowerShell>
-    <SwitchInvokePush>false</SwitchInvokePush>
+    <SwitchInvokePush>true</SwitchInvokePush>
     <OutputDirectory>OutputDirectory9</OutputDirectory>
     <PowerShellScriptPath>PowerShellScriptPath9</PowerShellScriptPath>
     <PushDestination>PushDestination9</PushDestination>

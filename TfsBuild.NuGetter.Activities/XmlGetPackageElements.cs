@@ -101,7 +101,7 @@ namespace TfsBuild.NuGetter.Activities
             var powerShellScriptPathFromBldDef = context.GetValue(PowerShellScriptPathFromBldDef);
 
 
-            var packageData = Execute(packageInfoFilePath, packageIndex, basePathFromBldDef, additionalOptionsFromBldDef,
+            var packageData = Execute(context, packageInfoFilePath, packageIndex, basePathFromBldDef, additionalOptionsFromBldDef,
                 outputDirectoryFromBldDef, switchInvokePushFromBldDef,
                 pushDestinationFromBldDef, switchInvokePowerShellFromBldDef, powerShellScriptPathFromBldDef, versionFromBldDef);
 
@@ -118,7 +118,7 @@ namespace TfsBuild.NuGetter.Activities
             SwitchInvokePowerShell.Set(context, packageData.SwitchInvokePowerShell);
         }
 
-        public NuGetterPackageInfo Execute(string packageInfoFilePath, int packageIndex, string basePathFromBldDef, string additionalOptionsFromBldDef, 
+        public NuGetterPackageInfo Execute(CodeActivityContext context, string packageInfoFilePath, int packageIndex, string basePathFromBldDef, string additionalOptionsFromBldDef, 
             string outputDirectoryFromBldDef, bool switchInvokePushFromBldDef, string pushDestinationFromBldDef, 
             bool switchInvokePowerShellFromBldDef, string powerShellScriptPathFromBldDef, string versionFromBldDef)
         {
@@ -158,6 +158,8 @@ namespace TfsBuild.NuGetter.Activities
                                            
                                            }).ToList();
 
+            context.WriteBuildMessage(string.Format("NuGetterPackageInfo: {0}", String.Join(",", nuGetterPackageInfoList)), BuildMessageImportance.High);
+
             for (var i = 0; i < nuGetterPackageInfoList.Count; i++)
             {
                 if (nuGetterPackageInfoList[i].Name == string.Empty)
@@ -177,20 +179,4 @@ namespace TfsBuild.NuGetter.Activities
         }
 
     }
-
-
-    public class NuGetterPackageInfo
-    {
-        public string Name { get; set; }
-        public string AdditionalOptions { get; set; }
-        public string BasePath { get; set; }
-        public string NuSpecFilePath { get; set; }
-        public string PowerShellScriptPath { get; set; }
-        public string Version { get; set; }
-        public string OutputDirectory { get; set; }
-        public bool SwitchInvokePush { get; set; }
-        public string PushDestination { get; set; }
-        public bool SwitchInvokePowerShell { get; set; }  
-    }
-
 }

@@ -37,8 +37,6 @@ namespace TfsBuild.NuGetter.Activities
         [RequiredArgument]
         public InArgument<string> PackageLocation { get; set; }
 
-        public InArgument<string> PackageLocations { get; set; }
-        
         /// <summary>
         /// The API key for pushing/publishing
         /// </summary>
@@ -69,8 +67,6 @@ namespace TfsBuild.NuGetter.Activities
             // The path of the nuspec file
             var packageLocation = PackageLocation.Get(context);
 
-            var packageLocations = PackageLocations.Get(context);
-            
             // The API Key for pushing
             var apiKey = ApiKey.Get(context);
 
@@ -86,7 +82,7 @@ namespace TfsBuild.NuGetter.Activities
             }
 
             // Call the method that will do the work
-            var results = NuGetPublishing(nuGetExeFilePath, packageLocation, packageLocations, pushDestination, apiKey, context);
+            var results = NuGetPublishing(nuGetExeFilePath, packageLocation, pushDestination, apiKey, context);
 
             // Send the result back to the workflow
             NuGetPushResult.Set(context, results);
@@ -101,25 +97,10 @@ namespace TfsBuild.NuGetter.Activities
         /// <param name="apiKey">Optional: (if required) the key used to push the package to the nuget gallery</param>
         /// <param name="context">the workflow/build context - used to send build messages</param>
         /// <returns>true if the nuget process succeeds</returns>
-        public bool NuGetPublishing(string nuGetExeFilePath, string packageLocation, 
-                                    string pushDestination, string apiKey, CodeActivityContext context)
-        {
-            return NuGetPublishing(nuGetExeFilePath, packageLocation, packageLocation, pushDestination, apiKey, context);
-        }
-
-        /// <summary>
-        /// Does the NuGet Processing work.  Formats data into an argument string and then calls NuGet.Exe to do the Push or Push/Publish
-        /// </summary>
-        /// <param name="nuGetExeFilePath">Full path to the nuget.exe application OR empty if nuget is in the machine's path</param>
-        /// <param name="packageLocation">Full path to the NuPkg file that is to be pushed</param>
-        /// <param name="pushDestination">Address of the gallery that nuget.exe will push the package to</param>
-        /// <param name="apiKey">Optional: (if required) the key used to push the package to the nuget gallery</param>
-        /// <param name="context">the workflow/build context - used to send build messages</param>
-        /// <returns>true if the nuget process succeeds</returns>
-        public bool NuGetPublishing(string nuGetExeFilePath, string packageLocation, string packageLocations, string pushDestination, string apiKey, CodeActivityContext context)
+        public bool NuGetPublishing(string nuGetExeFilePath, string packageLocation, string pushDestination, string apiKey, CodeActivityContext context)
         {
             #region Parameter Validation
-            if (string.IsNullOrWhiteSpace(packageLocation) && string.IsNullOrWhiteSpace(packageLocations))
+            if (string.IsNullOrWhiteSpace(packageLocation))
             {
                 throw new ArgumentNullException("packageLocation");
             }
@@ -136,7 +117,7 @@ namespace TfsBuild.NuGetter.Activities
 
             if (context != null)
             {
-                context.WriteBuildMessage(string.Format("packageLocations .. {0}", packageLocations), BuildMessageImportance.High);
+                context.WriteBuildMessage(string.Format("packageLocation .. {0}", packageLocation), BuildMessageImportance.High);
             }
 
             if (!regex.Match(pushDestination).Success)
@@ -144,24 +125,19 @@ namespace TfsBuild.NuGetter.Activities
                 var pushDestinationArgument = string.IsNullOrWhiteSpace(pushDestination) ?
                    string.Empty : string.Format("-s \"{0}\"", pushDestination);
 
-                if (!String.IsNullOrWhiteSpace(packageLocations))
+                if (!String.IsNullOrWhiteSpace(packageLocation))
                 {
-                    var locations = packageLocations.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    bool success = false;
-                    foreach (var location in locations)
+                    var arguments = string.Format("push \"{0}\" {1} {2}",
+                        packageLocation, apiKey, pushDestinationArgument);
+
+                    if (context != null)
                     {
-                        var argument = string.Format("push \"{0}\" {1} {2}",
-                                             location, apiKey, pushDestinationArgument);
-
-                        success = NuGetProcess.RunNuGetProcess(NuGetHelper.ValidateNuGetExe(nuGetExeFilePath), argument, context);
-
-                        if (context != null)
-                        {
-                            context.WriteBuildMessage(string.Format("Nuget Push Statement -> {0} {1}", argument, (success ? "**succeeded**" : "**failed**")), BuildMessageImportance.High);
-                        }
+                        context.WriteBuildMessage(string.Format("Push Arguments: {0}", arguments),
+                            BuildMessageImportance.High);
                     }
 
-                    return success;
+                    return NuGetProcess.RunNuGetProcess(NuGetHelper.ValidateNuGetExe(nuGetExeFilePath), arguments,
+                        context);
                 }
             }
 
